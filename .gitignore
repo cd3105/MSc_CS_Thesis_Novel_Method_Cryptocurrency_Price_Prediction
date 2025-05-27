@@ -130,7 +130,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-saved_models/
-res/
+Original_Code/saved_models/
+Original_Code/old_res/
 api_key_binance.py
 console_log/
+All_Crypto_Data/
