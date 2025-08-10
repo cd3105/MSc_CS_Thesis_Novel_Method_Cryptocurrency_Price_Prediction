@@ -76,17 +76,21 @@ def main():
 
                     model = LSTM(experiment_name) # Initialize LSTM Object
                     model.ds = ds # Set DataSet used for Training to Initialized DataSet Object
-                    ds.dataset_creation(df=True, detrended= True) # Create Training and Test Sets in varying formats with Differenced DataFrame
+                    ds.dataset_creation(df=True, 
+                                        detrended= True) # Create Training and Test Sets in varying formats with Differenced DataFrame
                     ds.dataset_normalization(scaling) # Normalize the various formats made from Differenced DataFrame
                     ds.data_summary() # Prints Shapes of Windowed Training and Test sets
                     to_predict = ds.X_test[:output] # Restrict Test Set to Current Month
-                    yhat, train_model = model.training(p, X_test=to_predict) # Train Model and Retrieve both the Trained Model and the corresponding made Predictions
+                    yhat, train_model = model.training(p, 
+                                                       X_test=to_predict) # Train Model and Retrieve both the Trained Model and the corresponding made Predictions
                     preds = np.array(yhat).reshape(-1, 1) # Reshape Predictions Array
                     np_preds = ds.inverse_transform_predictions(preds = preds) # Inverse Normalization
-                    inversed_preds = ds.inverse_differenced_dataset(diff_vals= np_preds, df=df, l = (len(ds.y_test_array))) # Inverse Differencing
+                    inversed_preds = ds.inverse_differenced_dataset(diff_vals=np_preds, 
+                                                                    df=df, 
+                                                                    l=(len(ds.y_test))) # (len(ds.y_test_array) # Inverse Differencing
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
                     ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame
-                    labels = ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
+                    labels = ds.y_test[(h):(len(inversed_preds)+h)].reshape(-1, 1) # ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
                     ds.add_split_value = 0 # Set Split Value to add in addition to 0
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
                     ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame

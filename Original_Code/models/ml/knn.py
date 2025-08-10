@@ -54,6 +54,7 @@ class KNN(ModelInterface):
                                          algorithm=self.p['algorithm'],
                                          p=self.p['p']) # Create KNN Model with the selected hyperparameters
 
+
     def fit(self):
         """
         Training of the model
@@ -62,12 +63,12 @@ class KNN(ModelInterface):
         self.__history_X = self.ds.X_train[:, :, 0] # Input Variables
         self.__history_y = np.ravel(self.ds.y_train.reshape(-1, 1)) # Target Variables
         
-        
         st = time.time() # Record Start Time
         self.model = self.model.fit(self.__history_X, self.__history_y) # .ravel()) # Fit Model to Training Data
         et = time.time() # Record End Time
         self.train_time = et-st # Full Time
         return self.model # Return Fitted Model
+
 
     def predict(self, X, train = False):
         """
@@ -85,10 +86,12 @@ class KNN(ModelInterface):
         predictions = self.model.predict(X) # Predict using Input Variables
         et = time.time() # Record End Time
         self.inference_time = ((et-st)*1000)/len(predictions) # Complete Time in Seconds
+
         if train:
-            true = self.ds.y_train_array # Perform Evaluation on Target Variables Training Set
+            true = self.ds.y_train.reshape(-1,1) # self.ds.y_train_array # Perform Evaluation on Target Variables Training Set
         else:
-            true = self.ds.y_test_array # Perform Evaluation on Target Variables Test Set
+            true = self.ds.y_test.reshape(-1,1) # self.ds.y_test_array # Perform Evaluation on Target Variables Test Set
+            
         mse = mean_squared_error(true[:len(predictions)], predictions) # Calculate MSE
         mae = mean_absolute_error(true[:len(predictions)], predictions) # Calculate MAE
 
@@ -97,6 +100,7 @@ class KNN(ModelInterface):
             print('MAE: %.3f' % mae) # Print MAE
 
         return predictions # Return Predictions
+
 
     def hyperparametrization(self):
         """

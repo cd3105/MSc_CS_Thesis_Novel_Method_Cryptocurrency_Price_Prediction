@@ -3,6 +3,7 @@ from util import save_results, dataset_binance, r2
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 import numpy as np
 import pandas as pd
+import time
 
 def main():
     h=0 # Horizon
@@ -69,7 +70,8 @@ def main():
 
                     model = STATS_ARIMA(experiment_name) # Initialize ARIMA Object
                     model.ds = ds # Set DataSet used for Training to Initialized DataSet Object
-                    ds.dataset_creation(df=True, detrended= True) # Create Training and Test Sets in varying formats with Differenced DataFrame
+                    ds.dataset_creation(df=True, 
+                                        detrended= True) # Create Training and Test Sets in varying formats with Differenced DataFrame
                     ds.dataset_normalization(scaling) # Normalize the various formats made from Differenced DataFrame
                     ds.data_summary() # Prints Shapes of Windowed Training and Test sets
                     to_predict = ds.X_test_array[:output] # Restrict Test Set to Current Month

@@ -5,17 +5,17 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-url_dict = {'Market_Cap': "https://bitinfocharts.com/comparison/marketcap-btc-eth-xrp-doge-ada-ltc-bch-xmr-dash-zec.html#alltime",
-            'Market_Cap_2': "https://bitinfocharts.com/comparison/marketcap-sol-trx-eos-atom-xlm-iot-iota.html#alltime",
+url_dict = {'Market_Cap_USD': "https://bitinfocharts.com/comparison/marketcap-btc-eth-xrp-doge-ada-ltc-bch-xmr-dash-zec.html#alltime",
+            'Market_Cap_USD_2': "https://bitinfocharts.com/comparison/marketcap-sol-trx-eos-atom-xlm-iot-iota.html#alltime",
             'Average_Price_USD': "https://bitinfocharts.com/comparison/price-btc-usdt-eth-sol-xrp-doge-ada-ltc-bch-xmr.html#alltime",
             'Average_Price_USD_2': "https://bitinfocharts.com/comparison/price-trx-bnb-link-dot-avax-eos-atom-xlm-dash-amp.html#alltime",
             'Average_Price_USD_3': "https://bitinfocharts.com/comparison/price-zec-xem-luna-matic.html#alltime",}
-coin_mapping_dict = {'Market_Cap': ['BTC', 'ETH', 'XRP', 'DOGE', 'ADA', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
-                     'Market_Cap_2': ['SOL', 'TRX', 'EOS', 'ATOM', 'XLM', 'IOTA'],
+coin_mapping_dict = {'Market_Cap_USD': ['BTC', 'ETH', 'XRP', 'DOGE', 'ADA', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
+                     'Market_Cap_USD_2': ['SOL', 'TRX', 'EOS', 'ATOM', 'XLM', 'IOTA'],
                      'Average_Price_USD': ['BTC', 'USDT', 'ETH', 'SOL', 'XRP', 'DOGE', 'ADA', 'LTC', 'BCH', 'XMR'],
                      'Average_Price_USD_2': ['TRX', 'BNB', 'LINK', 'DOT', 'AVAX', 'EOS', 'ATOM', 'XLM', 'DASH', 'AMP'],
                      'Average_Price_USD_3': ['ZEC', 'NEM', 'LUNA', 'MATIC']}
-file_path = 'All_Crypto_Data/Crypto_Market_Data/BitInfoCharts/1_Day/'
+file_path = 'All_Crypto_Data/Crypto_Market_Data/Unmerged/BitInfoCharts/1_Day/'
 
 for k in url_dict.keys():
     current_url = url_dict[k]

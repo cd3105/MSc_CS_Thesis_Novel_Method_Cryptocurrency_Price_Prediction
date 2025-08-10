@@ -29,7 +29,6 @@ class BinanceDataset(DatasetInterface):
         """:param string: api security required for binance api access """
         self.apiSecurity = apiSecurity
         
-    
    
     def create_frame(self, data):
         """
@@ -60,7 +59,6 @@ class BinanceDataset(DatasetInterface):
         """Date: close time"""
         df.CloseTime = pd.to_datetime(df.CloseTime, unit = 'ms')
         return df
-    
     
     
     def get_binance_data(self, sym, start_date, end_date):
@@ -128,6 +126,7 @@ class BinanceDataset(DatasetInterface):
         df_combined['timestamp'] =  pd.to_datetime(df_combined['date']).view(int) // 10 ** 9
         self.__save_crypto_df_to_csv(df= df_combined)
  
+
     def inverse_transform_predictions(self, preds, X = 0, method="minmax", scale_range=(0, 1)):             
         """
         Inverts Scaling from the Data
@@ -155,6 +154,7 @@ class BinanceDataset(DatasetInterface):
             inverse_preds = np.array(inverse_preds.values).reshape(-1, 1) # Convert Values in DataFrame to Numpy Array
         return inverse_preds # Return Inverse Transformed Predictions
     
+
     def differenced_dataset(self, interval =1):
         """
         Builds Difference Dataset based on Interval
@@ -198,6 +198,7 @@ class BinanceDataset(DatasetInterface):
             invert.append(value) # Add Prediction without Differencing to Inverted Values List
         inverted_values = np.array(invert) # Transformed Inverted Values List to Numpy Array
         return inverted_values # Return Numpy Array containing Non-Differenced
+        
         
     def scale_predictions(self, preds, X = 0, method="minmax", scale_range=(0, 1)):             
         """

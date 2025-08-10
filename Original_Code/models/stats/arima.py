@@ -122,10 +122,14 @@ class STATS_ARIMA(ModelProbabilistic):
             
           
            
-            self.model = ARIMA(self.__history, order=(self.p['p'], self.p['d'],
-                                                                  self.p['q']),
-                                                            seasonal_order=(self.p['P'], self.p['D'],
-                                                                    self.p['Q'], self.p['S']))
+            self.model = ARIMA(self.__history, 
+                               order=(self.p['p'], 
+                                      self.p['d'],
+                                      self.p['q']),
+                               seasonal_order=(self.p['P'], 
+                                               self.p['D'],
+                                               self.p['Q'], 
+                                               self.p['S']))
             # retrain the model at each step prediction
             
             self.__temp_model = self.model.fit(method_kwargs={"warn_convergence": False})

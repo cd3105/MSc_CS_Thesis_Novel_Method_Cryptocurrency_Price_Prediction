@@ -1,19 +1,18 @@
+import os
 import requests
 import pandas as pd
 from datetime import datetime
 from io import StringIO
 
-market_chart_dict = {'Market_Price': 'market-price',
+market_chart_dict = {'Market_Price_USD': 'market-price',
                      'Total_Circulating_Coins': 'total-bitcoins',
-                     'Market_Cap': 'market-cap',
-                     'Exchange_Trade_Volume': 'trade-volume',
-                     'Market_Value_to_Realised_Value': 'mvrv',
-                     'Network_Value_to_Transactions': 'nvt',
-                     'Network_Value_to_Transactions_Signal': 'nvts',
-                     'Profitable_Days': 'bitcoin-profitable-days',
-                     '2_Year_MA_Multiplier': '2y-moving-average',
-                     'Pi_Cycle_Top_Indicator': 'pi-cycle-top-indicator',
-                     '200_Week_MA': '200w-moving-avg-heatmap',}
+                     'Market_Cap_USD': 'market-cap',
+                     'Exchange_Trade_Volume_USD': 'trade-volume',}
+
+frequency_dict = {'Market_Price_USD': '1_Day',
+                  'Total_Circulating_Coins': 'N_Min',
+                  'Market_Cap_USD': 'N_Min',
+                  'Exchange_Trade_Volume_USD': '1_Day',}
 
 for mk in market_chart_dict.keys():
     current_url = f"https://api.blockchain.info/charts/{market_chart_dict[mk]}?timespan=20years&format=csv&sampled=false"
@@ -22,13 +21,15 @@ for mk in market_chart_dict.keys():
 
     if current_response.status_code == 200:
         csv_data = StringIO(current_response.text)
-        current_df = pd.read_csv(csv_data, header=None, names=['Time', mk])
+        current_df = pd.read_csv(csv_data, header=None, names=['TIMESTAMP', f'BTC_{mk.upper()}'])
 
-        print(current_df)
+        current_file_path = f'All_Crypto_Data/Crypto_Market_Data/Unmerged/Blockchain/BTC/{frequency_dict[mk]}/'
 
-        current_file_path = 'All_Crypto_Data/Crypto_Market_Data/Blockchain/BTC/'
-        current_file_name = f'Blockchain_BTC_USD_{mk}_{datetime.strptime(list(current_df["Time"])[0], "%Y-%m-%d %H:%M:%S").strftime("%d-%m-%Y").replace("-", "_")}__{datetime.strptime(list(current_df["Time"])[-1], "%Y-%m-%d %H:%M:%S").strftime("%d-%m-%Y").replace("-", "_")}.csv'
+        if not os.path.exists(current_file_path):
+            os.makedirs(current_file_path)
 
-        current_df.to_csv(current_file_path + current_file_name)
+        current_file_name = f'Blockchain_BTC_USD_{mk}_{datetime.strptime(list(current_df["TIMESTAMP"])[0], "%Y-%m-%d %H:%M:%S").strftime("%d_%m_%Y")}__{datetime.strptime(list(current_df["TIMESTAMP"])[-1], "%Y-%m-%d %H:%M:%S").strftime("%d_%m_%Y")}.csv'
+
+        current_df.to_csv(current_file_path + current_file_name, index=False)
     else:
         print(f"Failed to retrieve data: {current_response.status_code} (Chart: {mk})")

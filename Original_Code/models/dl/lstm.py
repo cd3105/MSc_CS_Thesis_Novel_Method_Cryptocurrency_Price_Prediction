@@ -66,7 +66,8 @@ class LSTM(ModelInterfaceDL):
                                    activation=self.p['first_conv_activation'],
                                    input_shape=input_shape),  # Set up Conv1D Layer with selected Hyper Parameters
             tf.keras.layers.LSTM(int(self.p['first_lstm_dim'])),  # Set up LSTM Layer with selected Hyper Parameters
-            tf.keras.layers.Dense(int(self.p['first_dense_dim']), activation=self.p['first_dense_activation']), # Set up Dense Layer with selected Hyper Parameters
+            tf.keras.layers.Dense(int(self.p['first_dense_dim']), 
+                                  activation=self.p['first_dense_activation']), # Set up Dense Layer with selected Hyper Parameters
             tf.keras.layers.Dense(int(self.ds.y_train.shape[2])), # Set up Ouput Dense Layer resulting in an output matching the dimensions of y
         ])
 

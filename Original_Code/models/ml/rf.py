@@ -89,9 +89,9 @@ class RF(ModelInterface):
         et = time.time() # Record End Time
         self.inference_time = ((et-st) *1000)/len(X) # Complete Time
         if train:
-            true = self.ds.y_train_array # Perform Evaluation on Target Variables Training Set
+            true = self.ds.y_train.reshape(-1,1) # self.ds.y_train_array # Perform Evaluation on Target Variables Training Set
         else:
-            true = self.ds.y_test_array # Perform Evaluation on Target Variables Test Set
+            true = self.ds.y_test.reshape(-1,1) # self.ds.y_test_array # Perform Evaluation on Target Variables Test Set
         mse = mean_squared_error(true[:len(predictions)], predictions) # Calculate MSE
         mae = mean_absolute_error(true[:len(predictions)], predictions) # Calculate MAE
 

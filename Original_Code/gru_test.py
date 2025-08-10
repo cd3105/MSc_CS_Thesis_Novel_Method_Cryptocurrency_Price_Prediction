@@ -14,6 +14,8 @@ def main():
     scaling = ['minmax'] # Normalization
     tuned =  1 # Designation of whether the model has been tuned or not with 0 indicating the latter
     window = 30 # Previous Timesteps to consider for predicting the next one
+    corrected_setup = False
+
     for t in targets: # Loop of Target Variables
         for c in cryptos: # Loop over Cryptos
             for rep in range(1, 4): # Loop over Number of Repetitions
@@ -59,39 +61,42 @@ def main():
                             }
                     else: # If Model hasn't been Tuned, then set these Parameters
                         p = {'first_gru_dim': 75,
-                                'gru_activation': 'relu',
-                                'first_dense_dim': 100,
-                                'first_dense_activation': 'relu',
-                                'dense_kernel_init': 'he_normal',
-                                'batch_size': 256,
-                                'epochs': 200,
-                                'patience': 50,
-                                'optimizer': 'adam',
-                                'lr': 1E-3,
-                                'momentum': 0.9,
-                                'decay': 1E-3,
-                                }
+                             'gru_activation': 'relu',
+                             'first_dense_dim': 100,
+                             'first_dense_activation': 'relu',
+                             'dense_kernel_init': 'he_normal',
+                             'batch_size': 256,
+                             'epochs': 200,
+                             'patience': 50,
+                             'optimizer': 'adam',
+                             'lr': 1E-3,
+                             'momentum': 0.9,
+                             'decay': 1E-3,
+                             }
 
                     model = GRU(experiment_name) # Initialize GRU Object
                     model.ds = ds # Set DataSet used for Training to Initialized DataSet Object
                     ds.dataset_creation(df=True,
-                                        detrended= True) # Create Training and Test Sets in varying formats with Differenced DataFrame
+                                        detrended= True, 
+                                        corrected_setup=corrected_setup) # Create Training and Test Sets in varying formats with Differenced DataFrame
                     ds.dataset_normalization(scaling) # Normalize the various formats made from Differenced DataFrame
                     ds.data_summary() # Prints Shapes of Windowed Training and Test sets
                     to_predict = ds.X_test[:output] # Restrict Test Set to Current Month
                     yhat, train_model = model.training(p,
-                                                    X_test=to_predict) # Train Model and Retrieve both the Trained Model and the corresponding made Predictions
+                                                       X_test=to_predict) # Train Model and Retrieve both the Trained Model and the corresponding made Predictions
                     preds = np.array(yhat).reshape(-1, 1) # Reshape Predictions Array
-                    np_preds = ds.inverse_transform_predictions(preds = preds) # Inverse Normalization
+                    np_preds = ds.inverse_transform_predictions(preds=preds) # Inverse Normalization
                     inversed_preds = ds.inverse_differenced_dataset(diff_vals= np_preds,
                                                                     df=df,
-                                                                    l = (len(ds.y_test_array))) # Inverse Differencing
+                                                                    l=(len(ds.y_test))) # (len(ds.y_test_array) # Inverse Differencing
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
-                    ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame
-                    labels = ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
+                    ds.dataset_creation(df=True, 
+                                        corrected_setup=corrected_setup) # Create Training and Test Sets in varying formats with Original DataFrame
+                    labels = ds.y_test[(h):(len(inversed_preds)+h)].reshape(-1, 1) # ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
                     ds.add_split_value = 0 # Set Split Value to add in addition to 0
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
-                    ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame
+                    ds.dataset_creation(df=True, 
+                                        corrected_setup=corrected_setup) # Create Training and Test Sets in varying formats with Original DataFrame
                     ds.dataset_normalization(scaling) # Normalize the various formats made from Original DataFrame
                     n_preds = ds.scale_predictions(preds=inversed_preds) # Normalize Predictions
                     n_labels = ds.scale_predictions(preds=labels) # Normalize Actual Values
@@ -130,6 +135,12 @@ def main():
                     all_labels.extend(labels) # Save Normalized Actual Values to Array
                     all_n_predictions.extend(n_preds) # Save Normalized Predictions to Array
                     all_n_labels.extend(n_labels) # Save Normalized Actual Values to Array
+
+                    if corrected_setup:
+                        res_map = 'reran_new_res'
+                    else:
+                        res_map = 'reran_old_res'
+
                 if not tuned:
                     save_results.save_params_csv(model.p, model.name)      
                 
@@ -137,6 +148,7 @@ def main():
                                             labels=all_labels,
                                             feature=t,
                                             filename=experiment_name,
+                                            res_map=res_map,
                                             model_type="GRU",
                                             bivariate=len(ds.target_name) > 1) # Save Actual Values and Predicted Values
                       
@@ -144,6 +156,7 @@ def main():
                                             labels=all_n_labels,
                                             feature=t,
                                             filename=n_experiment_name,
+                                            res_map=res_map,
                                             model_type="GRU",
                                             bivariate=len(ds.target_name) > 1) # Save Normalized Actual Values and Predicted Values
                 
@@ -152,6 +165,7 @@ def main():
                                             rmses=rmse,
                                             mapes=mape,
                                             filename=experiment_name,
+                                            res_map=res_map,
                                             r2=r2_score,
                                             model_type="GRU") # Save Metrics
                 
@@ -160,16 +174,19 @@ def main():
                                             rmses=n_rmse,
                                             mapes=n_mape,
                                             filename=n_experiment_name,
+                                            res_map=res_map,
                                             r2=n_r2_score,
                                             model_type="GRU") # Save Normalized Metrics
 
                 save_results.save_timing(times=inference_time,
-                                        filename=f'{experiment_name}-inf_time',
-                                        model_type="GRU") # Save Testing Time
+                                         filename=f'{experiment_name}-inf_time',
+                                         res_map=res_map,
+                                         model_type="GRU") # Save Testing Time
                 
                 save_results.save_timing(times=train_time,
-                                        filename=f'{experiment_name}-train_time',
-                                        model_type="GRU") # Save Training Time        
+                                         filename=f'{experiment_name}-train_time',
+                                         res_map=res_map,
+                                         model_type="GRU") # Save Training Time        
                                                     
 if __name__ == "__main__":
     main()

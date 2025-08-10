@@ -127,7 +127,7 @@ class DatasetInterface:
         print('Training', self.X_train.shape, 'Testing', self.X_test.shape)
 
 
-    def dataset_creation(self, df = False, detrended = False, days_365=True):
+    def dataset_creation(self, df = False, detrended = False, corrected_setup=True):
         """
         Create all the datasets components with the training and test sets split.
         :param Boolean detrended: checks whether self.df is already set [Default = False]
@@ -147,7 +147,7 @@ class DatasetInterface:
         self.X, self.y = self.__windowed_dataset(columns) # Retrieve Input Variable Numpy Array (X) and Target Variable Numpy Array (y) after Windowing
         test_start_date_idx = list(self.df['timestamp']).index(int(datetime(2021, 6, 1, tzinfo=timezone.utc).timestamp()))
 
-        if not days_365:
+        if not corrected_setup:
             if detrended:
                 window_split_value = (int(self.X.shape[0] * self.train_split_factor)-1) + self.add_split_value
             else:
@@ -171,13 +171,10 @@ class DatasetInterface:
         if len(self.target_name) == 1: # Reshape Target Variable Numpy Array in case there is a singular Target Variable
             self.X_array = self.X_array.reshape(-1, 1)
 
-        if not days_365:
-            if detrended: 
-                split_value = (int(self.X_array.shape[0] * self.train_split_factor)-1) + self.add_split_value
-            else: 
-                split_value = split_value = (int(self.X_array.shape[0] * self.train_split_factor)) + self.add_split_value
-        else:
-            split_value = (test_start_date_idx - 1) + self.add_split_value
+        if detrended: 
+            split_value = (int(self.X_array.shape[0] * self.train_split_factor)-1) + self.add_split_value
+        else: 
+            split_value = (int(self.X_array.shape[0] * self.train_split_factor)) + self.add_split_value
 
         self.X_train_array = self.X_array[:split_value] # Retrieve Training Portion of X Non-Windowed
         self.y_train_array = self.X_array[self.horizon + 1:self.horizon + split_value + 1] # Retrieve Training Portion of y Non-Windowed

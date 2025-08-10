@@ -1,0 +1,8 @@
+,Frequency,ADF_P_Val,ADF_Determination,KPSS_P_Val,KPSS_Determination
+0,12_Hour,0.633136845195242,Non-Stationary,0.01,Non-Stationary
+1,1_Day,0.6719373557317541,Non-Stationary,0.01,Non-Stationary
+2,1_Hour,0.6665406346222452,Non-Stationary,0.01,Non-Stationary
+3,2_Hour,0.6602622089973971,Non-Stationary,0.01,Non-Stationary
+4,4_Hour,0.5762007063383374,Non-Stationary,0.01,Non-Stationary
+5,6_Hour,0.623279422172647,Non-Stationary,0.01,Non-Stationary
+6,8_Hour,0.6430464198404272,Non-Stationary,0.01,Non-Stationary

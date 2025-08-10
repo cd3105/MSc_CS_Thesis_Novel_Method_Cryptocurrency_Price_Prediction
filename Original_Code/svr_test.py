@@ -9,7 +9,7 @@ def main():
     targets = ['close'] # Target Variable
     cryptos =  ['btc',  'eth', 'ltc', 'xmr', 'xrp'] # Selected Cryptos
     retrain = [0, 30, 31, 31, 30, 31, 30, 31, 31, 28, 31, 30] # Values corresponding to days per Month to adjust Train / Test Set to incorporate evaluated months into Training Set
-    outputs =[30, 31, 31, 30, 31, 30, 31, 31, 28, 31, 30, 31] # Portion of Test Set which is used for evaluation
+    outputs = [30, 31, 31, 30, 31, 30, 31, 31, 28, 31, 30, 31] # Portion of Test Set which is used for evaluation
     scaling = ['minmax'] # Normalization
     tuned =  1 # Designation of whether the model has been tuned or not with 0 indicating the latter
     window = 30 # Previous Timesteps to consider for predicting the next one
@@ -71,10 +71,10 @@ def main():
                     np_preds = ds.inverse_transform_predictions(preds=preds) # Inverse Normalization
                     inversed_preds = ds.inverse_differenced_dataset(diff_vals= np_preds, 
                                                                     df=df, 
-                                                                    l=(len(ds.y_test_array))) # Inverse Differencing
+                                                                    l=(len(ds.y_test))) # (len(ds.y_test_array) # Inverse Differencing
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
                     ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame
-                    labels = ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
+                    labels = ds.y_test[(h):(len(inversed_preds)+h)].reshape(-1, 1) # ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1) # Retrieve Actual Values corresponding to the Predicted Values
                     ds.add_split_value = 0 # Set Split Value to add in addition to 0
                     ds.df = df # Sets DataFrame variable of Initialized DataSet object to the Original DataFrame
                     ds.dataset_creation(df=True) # Create Training and Test Sets in varying formats with Original DataFrame

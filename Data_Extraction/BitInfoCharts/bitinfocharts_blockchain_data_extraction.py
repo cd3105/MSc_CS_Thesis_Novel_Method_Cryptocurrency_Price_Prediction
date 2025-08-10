@@ -5,11 +5,11 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-url_dict = {'Transaction_Count': "https://bitinfocharts.com/comparison/transactions-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
-            'Average_Block_Size': "https://bitinfocharts.com/comparison/size-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
+url_dict = {'Confirmed_Transaction_Count': "https://bitinfocharts.com/comparison/transactions-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
+            'Average_Block_Size_Bytes': "https://bitinfocharts.com/comparison/size-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Sent_From_Unique_Address_Count': "https://bitinfocharts.com/comparison/sentbyaddress-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
-            'Average_Mining_Difficulty': "https://bitinfocharts.com/comparison/difficulty-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
-            'Average_Hash_Rate': "https://bitinfocharts.com/comparison/hashrate-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
+            'Average_Mining_Difficulty_Hashes': "https://bitinfocharts.com/comparison/difficulty-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
+            'Average_Hash_Rate_Hashes_Per_Second': "https://bitinfocharts.com/comparison/hashrate-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Mining_Profitability': "https://bitinfocharts.com/comparison/mining_profitability-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Sent_Coins_USD': "https://bitinfocharts.com/comparison/sentinusd-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Average_Transaction_Fee_USD': "https://bitinfocharts.com/comparison/transactionfees-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
@@ -20,11 +20,11 @@ url_dict = {'Transaction_Count': "https://bitinfocharts.com/comparison/transacti
             'Active_Address_Count': "https://bitinfocharts.com/comparison/activeaddresses-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Top_100_Richest_Percentage_of_Total_Coins': "https://bitinfocharts.com/comparison/top100cap-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Average_Fee_Percentage_in_Total_Block_Reward': "https://bitinfocharts.com/comparison/fee_to_reward-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime"}
-coin_mapping_dict = {'Transaction_Count': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
-                     'Average_Block_Size': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
+coin_mapping_dict = {'Confirmed_Transaction_Count': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
+                     'Average_Block_Size_Bytes': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Sent_From_Unique_Address_Count': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
-                     'Average_Mining_Difficulty': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
-                     'Average_Hash_Rate': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
+                     'Average_Mining_Difficulty_Hashes': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
+                     'Average_Hash_Rate_Hashes_Per_Second': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Mining_Profitability': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Sent_Coins_USD': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Average_Transaction_Fee_USD': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
@@ -35,7 +35,7 @@ coin_mapping_dict = {'Transaction_Count': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', '
                      'Active_Address_Count': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Top_100_Richest_Percentage_of_Total_Coins': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC'],
                      'Average_Fee_Percentage_in_Total_Block_Reward': ['BTC', 'ETH', 'XRP', 'DOGE', 'LTC', 'BCH', 'XMR', 'DASH', 'ZEC']}
-file_path = 'All_Crypto_Data/Blockchain_Data/BitInfoCharts/1_Day/'
+file_path = 'All_Crypto_Data/Blockchain_Data/Unmerged/BitInfoCharts/1_Day/'
 
 for k in url_dict.keys():
     current_url = url_dict[k]

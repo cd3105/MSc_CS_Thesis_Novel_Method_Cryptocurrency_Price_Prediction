@@ -118,3 +118,4 @@ class ModelInterface:
         predictions = self.predict(X_test) # Predict using Input Feature Test Set
 
         return predictions, train_model # Return Predictions and Trained Model
+

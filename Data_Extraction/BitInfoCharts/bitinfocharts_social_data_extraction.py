@@ -16,7 +16,7 @@ coin_mapping_dict = {'Tweet_Volume_Full_Name_Hashtag': ['BTC', 'ETH', 'SOL', 'XR
 file_path_dict = {'Tweet_Volume_Full_Name_Hashtag': 'All_Crypto_Data/Crypto_Twitter_Data/BitInfoCharts/1_Day/',
                   'Tweet_Volume_Full_Name_Hashtag_2': 'All_Crypto_Data/Crypto_Twitter_Data/BitInfoCharts/1_Day/',
                   'Tweet_Volume_Full_Name_Hashtag_3': 'All_Crypto_Data/Crypto_Twitter_Data/BitInfoCharts/1_Day/',
-                  'Google_Trends_Full_Name': "All_Crypto_Data/Crypto_Google_Trends/Google_Trends_via_BitInfoCharts/1_Day/"}
+                  'Google_Trends_Full_Name': "All_Crypto_Data/Crypto_Google_Trends/Merged/Google_Trends_via_BitInfoCharts/1_Day/"}
 
 for k in url_dict.keys():
     current_url = url_dict[k]
