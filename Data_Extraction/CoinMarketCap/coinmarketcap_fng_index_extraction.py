@@ -1,5 +1,3 @@
-#This example uses Python 2.7 and the python-request library.
-
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from datetime import datetime
@@ -7,6 +5,8 @@ import json
 import pandas as pd
 import os
 from dotenv import load_dotenv
+
+# Script for extracting the Fear and Greed Index using the CoinMarketCap API
 
 load_dotenv()
 

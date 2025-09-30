@@ -5,6 +5,8 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
+# Script for retrieving Daily Market Data via the CoinDesk API
+
 load_dotenv()
 
 launch_dates_df = pd.read_csv("All_Crypto_Data\Crypto_Launch_Data\Crypto_Launch_Dates.csv")

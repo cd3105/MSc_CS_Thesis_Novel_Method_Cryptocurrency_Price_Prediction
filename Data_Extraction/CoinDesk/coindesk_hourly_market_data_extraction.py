@@ -5,6 +5,8 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
+# Script for retrieving Hourly Market Data via the CoinDesk API
+
 load_dotenv()
 
 markets = {'binance': 'Binance_via_CoinDesk',}

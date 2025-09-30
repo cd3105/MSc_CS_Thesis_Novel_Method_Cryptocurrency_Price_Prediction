@@ -5,6 +5,8 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
+# Script for retrieving Daily Tweet Volume and Google Trends related to several cryptocurrencies
+
 url_dict = {'Tweet_Volume_Full_Name_Hashtag': "https://bitinfocharts.com/comparison/tweets-btc-eth-sol-xrp-doge-ada-bnb-ltc-xmr.html#alltime",
             'Tweet_Volume_Full_Name_Hashtag_2': "https://bitinfocharts.com/comparison/tweets-trx-link-dot-avax-bch-eos-atom-xlm-dash-zec.html#alltime",
             'Tweet_Volume_Full_Name_Hashtag_3': "https://bitinfocharts.com/comparison/tweets-avax-xem-luna-amp-matic.html#alltime",

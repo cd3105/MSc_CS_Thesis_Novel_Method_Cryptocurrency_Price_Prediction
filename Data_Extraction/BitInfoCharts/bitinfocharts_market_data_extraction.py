@@ -5,6 +5,8 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
+# Script for retrieving Daily Market Data related to several cryptocurrencies
+
 url_dict = {'Market_Cap_USD': "https://bitinfocharts.com/comparison/marketcap-btc-eth-xrp-doge-ada-ltc-bch-xmr-dash-zec.html#alltime",
             'Market_Cap_USD_2': "https://bitinfocharts.com/comparison/marketcap-sol-trx-eos-atom-xlm-iot-iota.html#alltime",
             'Average_Price_USD': "https://bitinfocharts.com/comparison/price-btc-usdt-eth-sol-xrp-doge-ada-ltc-bch-xmr.html#alltime",

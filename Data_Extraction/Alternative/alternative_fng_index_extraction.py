@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import json
 
+# Script for extracting the Fear and Greed Index using the Alternative API
+
 url = "https://api.alternative.me/fng/?limit=0&format=json&date_format=world"
 response = requests.get(url)
 

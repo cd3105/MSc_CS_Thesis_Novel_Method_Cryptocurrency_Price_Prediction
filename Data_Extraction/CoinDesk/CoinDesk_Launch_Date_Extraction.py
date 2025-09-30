@@ -4,6 +4,8 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 
+# Script for retrieving Launch Date information of a large quantity of cryptocurrencies using the CoinDesk API
+
 load_dotenv()
 
 kaggle_23CCs_market_data_base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Kaggle/Kaggle_Daily_USD_Market_Data_23_CCs_until_07_07_2021/"

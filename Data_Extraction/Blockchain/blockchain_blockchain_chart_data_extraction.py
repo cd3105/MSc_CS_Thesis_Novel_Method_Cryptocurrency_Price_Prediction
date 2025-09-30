@@ -4,6 +4,8 @@ import pandas as pd
 from datetime import datetime
 from io import StringIO
 
+# Script for extracting BTC Blockchain Data using the Blockchain API
+
 blockchain_chart_dict = {'Blockchain_Size_Megabytes': 'blocks-size',
                          'Average_Block_Size_Megabytes': 'avg-block-size',
                          'Average_Transaction_Count_Per_Block': 'n-transactions-per-block',

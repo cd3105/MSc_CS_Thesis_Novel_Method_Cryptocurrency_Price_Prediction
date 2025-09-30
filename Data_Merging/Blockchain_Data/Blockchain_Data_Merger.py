@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script to Merge Blockchain Data into a single Dataset at varying granularities
+
 base_path = "All_Crypto_Data/Blockchain_Data/Unmerged/Blockchain/BTC/"
 operation_dict = {'BTC_AVERAGE_TRANSACTION_CONFIRMATION_TIME_MINUTES':'mean',
                   'BTC_MEMPOOL_SIZE_BYTES':'mean',

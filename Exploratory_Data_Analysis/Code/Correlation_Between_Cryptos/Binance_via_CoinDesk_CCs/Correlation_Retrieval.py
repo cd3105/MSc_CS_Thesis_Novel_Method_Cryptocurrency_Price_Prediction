@@ -4,6 +4,8 @@ import numpy as np
 from datetime import datetime
 from statsmodels.tsa.stattools import grangercausalitytests
 
+# Script for determining correlation / causality using Binance Dataset
+
 base_data_path_1 = "All_Crypto_Data/Crypto_Market_Data/Merged/Binance_via_CoinDesk/"
 base_data_path_2 = "All_Crypto_Data/Crypto_Market_Data/Merged/Other_Binance_via_CoinDesk/"
 opening_price_df = pd.DataFrame(columns=['TIMESTAMP'])

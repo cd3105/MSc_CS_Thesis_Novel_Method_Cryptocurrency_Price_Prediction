@@ -5,6 +5,8 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
+# Script for retrieving Daily Blockchain Data related to several cryptocurrencies
+
 url_dict = {'Confirmed_Transaction_Count': "https://bitinfocharts.com/comparison/transactions-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Average_Block_Size_Bytes': "https://bitinfocharts.com/comparison/size-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",
             'Sent_From_Unique_Address_Count': "https://bitinfocharts.com/comparison/sentbyaddress-btc-eth-xrp-doge-ltc-bch-xmr-dash-zec.html#alltime",

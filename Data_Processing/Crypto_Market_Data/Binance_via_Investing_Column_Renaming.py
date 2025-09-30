@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script for renaming columns in Investing data
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Binance_via_Investing/"
 
 for cc in [dir for dir in os.listdir(base_path) if not dir.endswith('.txt')]:

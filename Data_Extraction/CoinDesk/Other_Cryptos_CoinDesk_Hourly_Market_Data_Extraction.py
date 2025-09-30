@@ -4,6 +4,8 @@ import requests
 from io import StringIO
 from datetime import datetime
 
+# Script for retrieving Hourly Market Data via the CoinDesk API
+
 selected_ccs_base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Binance_Extended/"
 
 other_ccs_investing_base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Other_Investing/"

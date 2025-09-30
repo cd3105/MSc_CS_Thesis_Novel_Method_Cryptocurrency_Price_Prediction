@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import re
 
+# Script to Merge Etherscan Data into a single Dataset
+
 base_file_path = "All_Crypto_Data/Blockchain_Data/Unmerged/Etherscan/ETH/1_Day/"
 merged_df = pd.DataFrame({'TIMESTAMP':[]})
 

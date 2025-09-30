@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script for Fusing OKCoin Market Data
+
 base_file_path_1 = "All_Crypto_Data/Crypto_Market_Data/OKCoin_via_CoinDesk"
 base_file_path_2 = "All_Crypto_Data/Crypto_Market_Data/OKCoin_via_CryptoCompare"
 base_file_path_3 = "All_Crypto_Data/Crypto_Market_Data/OKCoin_via_CryptoDataDownload"

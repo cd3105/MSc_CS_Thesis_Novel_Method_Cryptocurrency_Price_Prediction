@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script for splitting Google Trends data of each cryptocurrency into separate datasets
+
 gt_df = pd.read_csv("All_Crypto_Data/Crypto_Google_Trends/Merged/Google_Trends_via_BitInfoCharts/1_Day/BitInfoCharts_Daily_Google_Trends_Full_Name_BTC_ETH_DOGE_LTC_XMR_01_01_2010__18_05_2025.csv", 
                     index_col=0).rename(columns={'Time':'TIMESTAMP'})
 gt_df['TIMESTAMP'] = pd.to_datetime(gt_df['TIMESTAMP'])

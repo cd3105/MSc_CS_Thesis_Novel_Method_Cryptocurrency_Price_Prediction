@@ -38,6 +38,7 @@ def main():
                                                             train_split_factor=0.8)
                     df, diff_df = ds.differenced_dataset()
                     ds.df = diff_df
+                    
                     if index > 0:
                         add_split_value += r
                     
@@ -72,14 +73,18 @@ def main():
                              'momentum': 0.9,
                              'decay': 1E-3,
                             }
-                        
+                    
                     model = GRU(experiment_name)
                     model.ds = ds 
                     ds.dataset_creation(df=True, 
                                         detrended= True)
                     ds.dataset_normalization(scaling)
+
+                    print(f"\nCurrent CC: {c}, Current Month Index: {index}, Current Split Offset: {r}, Current Prediction Portion Size: {output}")
                     ds.data_summary()
+                    
                     to_predict = ds.X_test[:output]
+
                     yhat, train_model = model.training(p, 
                                                        X_test=to_predict)                                                                 
                     preds = np.array(yhat).reshape(-1, 1)
@@ -90,12 +95,22 @@ def main():
                     ds.df = df
                     ds.dataset_creation(df=True)
                     labels = ds.y_test_array[(h):(len(inversed_preds)+h)].reshape(-1, 1)
+
                     ds.add_split_value = 0
                     ds.df = df
                     ds.dataset_creation(df=True)
                     ds.dataset_normalization(scaling)
                     n_preds = ds.scale_predictions(preds=inversed_preds)                               
                     n_labels = ds.scale_predictions(preds=labels)
+
+                    print(labels)
+                    print(labels.shape)
+                    print(n_labels)
+                    print(n_labels.shape)
+                    print(inversed_preds.shape)
+
+                    import time
+                    time.sleep(100000)
 
                     n_mse.append(mean_squared_error(n_labels, 
                                                     n_preds))

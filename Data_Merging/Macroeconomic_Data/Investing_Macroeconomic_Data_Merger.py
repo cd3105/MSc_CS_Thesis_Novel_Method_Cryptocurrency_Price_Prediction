@@ -3,6 +3,8 @@ import os
 import re
 from datetime import datetime
 
+# Script to Merge Investing Data into a single Dataset
+
 base_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/Investing/1_Day/"
 
 exchange_rates = ['AUD_USD', 'CAD_USD','CHF_USD','CNY_USD','DKK_USD','EUR_USD','GBP_USD','JPY_USD','NOK_USD','NZD_USD','RUB_USD','SEK_USD','SGD_USD']

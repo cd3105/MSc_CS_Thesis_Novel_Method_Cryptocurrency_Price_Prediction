@@ -3,6 +3,8 @@ import os
 import re
 from datetime import datetime
 
+# Script to Merge MacroTrends Data into a single Dataset
+
 base_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/MacroTrends/1_Day/"
 
 naming_dict = {'MacroTrends_10_Year_Bond_Yield_USD_Daily_02_01_1962__15_05_2025.csv':'10_YEAR_BOND_YIELD_USD', 

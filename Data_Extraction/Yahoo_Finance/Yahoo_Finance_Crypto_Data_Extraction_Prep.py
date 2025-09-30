@@ -3,6 +3,8 @@ import requests
 import yfinance as yf
 from bs4 import BeautifulSoup
 
+# Script to allow Cryptocurrency Market Data retrieval from Yahoo Finance
+
 all_ccs = []
 crypto_dict = {}
 headers = {"User-Agent": "Mozilla/5.0"}

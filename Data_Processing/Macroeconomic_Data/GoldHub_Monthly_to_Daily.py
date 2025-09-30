@@ -2,6 +2,8 @@ import os
 import pandas as pd
 from datetime import datetime
 
+# Script to generate GoldHub Gold Price dataset with daily intervals from the monthly GoldHub Gold Price dataset
+
 prefix = 'GOLD_PRICE'
 
 daily_file_path = "All_Crypto_Data/Macroeconomic_Data/Merged/GoldHub/1_Day/"

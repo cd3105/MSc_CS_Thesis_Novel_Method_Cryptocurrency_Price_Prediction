@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script for renaming columns in Investing data
+
 other_investing_data_base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Other_Investing/"
 
 for cc_csv in [m for m in os.listdir(other_investing_data_base_path) if m.endswith('.csv')]:

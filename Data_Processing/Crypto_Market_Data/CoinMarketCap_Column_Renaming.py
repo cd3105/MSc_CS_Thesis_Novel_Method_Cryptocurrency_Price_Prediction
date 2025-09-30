@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script for renaming columns in CoinMarketCap data
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/CoinMarketCap/"
 
 for cc in [f for f in os.listdir(base_path) if not f.endswith('.txt')]:

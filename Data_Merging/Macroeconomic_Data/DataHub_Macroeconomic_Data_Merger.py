@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script to Merge DataHub Data into a single Dataset
+
 daily_base_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/DataHub/1_Day/"
 monthly_base_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/DataHub/1_Month/"
 

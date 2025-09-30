@@ -2,6 +2,8 @@ import pandas as pd
 from datetime import datetime
 import os
 
+# Script for splitting Market Data and Blockchain Data into separate datasets
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/CryptoCompare/"
 
 for cc in [m for m in os.listdir(base_path) if not m.endswith('.txt')]:

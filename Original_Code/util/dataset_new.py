@@ -1,6 +1,6 @@
 """
 Interface of a Dataset class with shared functionalities
-"""
+"""             
 
 import numpy as np
 import pandas as pd
@@ -124,7 +124,10 @@ class DatasetInterface:
         Print a summary of the dataset
         :return: None
         """
-        print('Training', self.X_train.shape, 'Testing', self.X_test.shape)
+        
+        print(f'Current Training Set Shape: {self.X_train.shape}, Current Testing Set Shape: {self.X_test.shape}')
+        # print(f'Current First Training Y Instance: {self.y_train[0]}, Current Last Training Y Instance: {self.y_train[-1]}')
+        # print(f'Current First Test Y Instance: {self.y_test[0]}, Current Last Test Y Instance: {self.y_test[-1]}')
 
 
     def dataset_creation(self, df = False, detrended = False):
@@ -145,7 +148,7 @@ class DatasetInterface:
             
         columns = self.df[self.training_features].to_numpy()
         self.X, self.y = self.__windowed_dataset(columns)
-        test_start_date_idx = list(self.df['timestamp']).index(int(datetime(2021, 6, 6, tzinfo=timezone.utc).timestamp()))
+        test_start_date_idx = list(self.df['timestamp']).index(int(datetime(2021, 6, 1, tzinfo=timezone.utc).timestamp()))
 
         window_split_value = (test_start_date_idx - self.input_window) + self.add_split_value
 

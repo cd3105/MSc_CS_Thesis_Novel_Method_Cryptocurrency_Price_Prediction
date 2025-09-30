@@ -2,6 +2,8 @@ import nasdaqdatalink
 import os
 from dotenv import load_dotenv
 
+# Script for extracting Bitfinex Data using the NASDAQ API
+
 load_dotenv()
 
 data_code_dict = {"ADAUSD": "ADA_USD_OHLCV",

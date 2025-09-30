@@ -3,6 +3,8 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
+# Script for extracting BTC Market Data using the NASDAQ API
+
 load_dotenv()
 
 data_code_dict = {"MKPRU": "Market_Price_USD",

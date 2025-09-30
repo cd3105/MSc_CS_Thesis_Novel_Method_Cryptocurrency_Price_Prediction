@@ -4,6 +4,8 @@ import pandas as pd
 from datetime import datetime
 from io import StringIO
 
+# Script for extracting BTC Market Data using the Blockchain API
+
 market_chart_dict = {'Market_Price_USD': 'market-price',
                      'Total_Circulating_Coins': 'total-bitcoins',
                      'Market_Cap_USD': 'market-cap',

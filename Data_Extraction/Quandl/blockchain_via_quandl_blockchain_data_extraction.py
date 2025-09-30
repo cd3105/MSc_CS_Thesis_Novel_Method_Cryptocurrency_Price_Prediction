@@ -3,6 +3,8 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
+# Script for extracting BTC Blockchain Data using the NASDAQ API
+
 load_dotenv()
 
 data_code_dict = {"ATRCT": "Median_Transaction_Confirmation_Time_Minutes",

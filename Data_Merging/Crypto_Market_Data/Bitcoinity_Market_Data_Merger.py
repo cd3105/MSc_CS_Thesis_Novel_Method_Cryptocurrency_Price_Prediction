@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import re
 
+# Script to Merge Market Data into a single Dataset
+
 base_file_path = "All_Crypto_Data/Crypto_Market_Data/Unmerged/Bitcoinity/BTC/1_Day/"
 merged_df = pd.DataFrame({'TIMESTAMP':[]})
 

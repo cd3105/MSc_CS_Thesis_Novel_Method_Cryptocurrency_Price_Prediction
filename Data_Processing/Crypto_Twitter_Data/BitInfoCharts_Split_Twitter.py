@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import re
 
+# Script for splitting Tweet Volume data of each cryptocurrency into separate datasets
+
 base_path = 'All_Crypto_Data/Crypto_Twitter_Data/BitInfoCharts/1_Day/'
 merged_df = pd.DataFrame({'TIMESTAMP':[]})
 

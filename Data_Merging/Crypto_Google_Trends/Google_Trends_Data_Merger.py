@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+# Script to Merge Google Trends Data into a single Dataset
+
 ccs = ['BTC', 'ETH', 'LTC', 'XMR', 'XRP']
 
 base_path = 'All_Crypto_Data/Crypto_Google_Trends/Unmerged/Google_Trends/'

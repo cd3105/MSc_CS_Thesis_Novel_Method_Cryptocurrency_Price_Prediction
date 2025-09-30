@@ -2,6 +2,8 @@ import pandas as pd
 import datetime
 import os
 
+# Script for reordering and renaming files containing market data of 23 CCs
+
 map_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Kaggle/Kaggle_Daily_USD_Market_Data_23_CCs_until_07_07_2021/"
 
 for f in [f for f in os.listdir(map_path) if f.endswith(".csv")]:

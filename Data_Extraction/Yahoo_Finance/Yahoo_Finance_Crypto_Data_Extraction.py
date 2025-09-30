@@ -3,6 +3,8 @@ import pandas as pd
 import os
 import time
 
+# Script for retrieving Cryptocurrency Market Data from Yahoo Finance
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Yahoo_Finance/"
 crypto_dict = {}
 ticker_retrieval_counter = 0

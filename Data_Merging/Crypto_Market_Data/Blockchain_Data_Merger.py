@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import time
 
+# Script to Merge Blockchain Market Data into a single Dataset at varying granularities
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Unmerged/Blockchain/BTC/"
 merged_daily_df = pd.DataFrame({'TIMESTAMP':[]})
 merged_12_hourly_df = pd.DataFrame({'TIMESTAMP':[]})

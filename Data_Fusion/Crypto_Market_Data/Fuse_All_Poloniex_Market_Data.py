@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script for Fusing Poloniex Market Data
+
 base_file_path_1 = "All_Crypto_Data/Crypto_Market_Data/Poloniex_via_CoinDesk/"
 base_file_path_2 = "All_Crypto_Data/Crypto_Market_Data/Poloniex_via_CryptoDataDownload/"
 

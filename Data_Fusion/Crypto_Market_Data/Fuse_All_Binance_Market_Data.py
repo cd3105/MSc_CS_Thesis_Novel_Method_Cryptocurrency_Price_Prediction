@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+# Script for Fusing Binance Market Data
 
 original_data_base_path = "All_Crypto_Data/Original_Data/"
 new_data_base_path_1 = "All_Crypto_Data/Crypto_Market_Data/Merged/Binance/" # Will be ignored after evaluation of data
@@ -20,9 +21,14 @@ for cc in ccs:
     original_data_df['TIMESTAMP'] = pd.to_datetime(original_data_df['TIMESTAMP'])
     new_data_df_2['TIMESTAMP'] = pd.to_datetime(new_data_df_2['TIMESTAMP'])
 
-    cns_to_adjust = [c for c in new_data_df_2.columns if 'USDT' in c]
-    adjusted_cns = [c.replace('USDT', 'USD') for c in new_data_df_2.columns if 'USDT' in c]
-    new_data_df_2 = new_data_df_2.rename(columns=dict(zip(cns_to_adjust, adjusted_cns)))
+    # cns_to_adjust = [c for c in new_data_df_2.columns if 'USDT' in c]
+    # adjusted_cns = [c.replace('USDT', 'USD') for c in new_data_df_2.columns if 'USDT' in c]
+    # new_data_df_2 = new_data_df_2.rename(columns=dict(zip(cns_to_adjust, adjusted_cns)))
+    # combined_df = pd.merge(original_data_df, new_data_df_2, on='TIMESTAMP', how='outer')
+
+    cns_to_adjust = [c for c in original_data_df.columns if 'USD' in c]
+    adjusted_cns = [c.replace('USD', 'USDT') for c in original_data_df.columns if 'USD' in c]
+    original_data_df = original_data_df.rename(columns=dict(zip(cns_to_adjust, adjusted_cns)))
     combined_df = pd.merge(original_data_df, new_data_df_2, on='TIMESTAMP', how='outer')
     
     columns_to_reorder = []
@@ -42,5 +48,5 @@ for cc in ccs:
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    combined_df.to_csv(f"{save_path}Binance_{cc}_USD_Daily_Market_Data_{combined_df['TIMESTAMP'].min().strftime('%d_%m_%Y')}__{combined_df['TIMESTAMP'].max().strftime('%d_%m_%Y')}.csv", 
+    combined_df.to_csv(f"{save_path}Binance_{cc}_USDT_Daily_Market_Data_{combined_df['TIMESTAMP'].min().strftime('%d_%m_%Y')}__{combined_df['TIMESTAMP'].max().strftime('%d_%m_%Y')}.csv", 
                        index=False)

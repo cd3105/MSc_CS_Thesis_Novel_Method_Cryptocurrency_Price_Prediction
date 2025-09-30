@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script for renaming file and columns of Original Data
+
 original_data_path = "Original_Code/saved_data/"
 
 for f in os.listdir(original_data_path):

@@ -1,5 +1,7 @@
 import pandas as pd
 
+# Script for adding Commas to retrieved Etherscan Network Transaction Fees
+
 df = pd.read_csv(r"All_Crypto_Data/Blockchain_Data/Unmerged/Etherscan/ETH/1_Day/Etherscan_ETH_USD_Daily_UTC_Network_Transaction_Fee_ETH_30_07_2015__14_05_2025.csv")
 
 df['Length'] = df['Value'].apply(lambda x: len(str(x)))

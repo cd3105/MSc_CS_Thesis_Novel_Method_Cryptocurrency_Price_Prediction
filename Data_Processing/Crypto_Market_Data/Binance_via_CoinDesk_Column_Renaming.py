@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script for renaming Binance Data retrieved via the Coindesk API
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Binance_via_CoinDesk/"
 
 for cc in [m for m in os.listdir(base_path) if not m.endswith('.txt')]:

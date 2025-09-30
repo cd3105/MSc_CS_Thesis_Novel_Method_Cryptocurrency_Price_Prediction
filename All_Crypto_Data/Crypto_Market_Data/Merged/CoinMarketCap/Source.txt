@@ -1,0 +1,1 @@
+- Daily Price & Volume Data: https://coinmarketcap.com/currencies/bitcoin/historical-data/ --> RETRIEVED FOR BTC, LTC, XRP, ETH, XMR

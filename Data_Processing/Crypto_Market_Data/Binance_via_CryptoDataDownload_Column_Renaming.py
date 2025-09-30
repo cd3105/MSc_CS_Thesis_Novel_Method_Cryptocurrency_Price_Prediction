@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+# Script for renaming columns corresponding to Binance Data retrieved via CryptoDataDownload
+
 def detect_timestamp_unit(ts):
     if len(str(ts)) == 13:
         return 1000

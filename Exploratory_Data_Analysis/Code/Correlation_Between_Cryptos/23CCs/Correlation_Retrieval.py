@@ -4,6 +4,8 @@ import numpy as np
 from datetime import datetime
 from statsmodels.tsa.stattools import grangercausalitytests
 
+# Script for determining correlation / causality using 23CCs Kaggle Dataset
+
 base_data_path = "All_Crypto_Data/Crypto_Market_Data/Merged/Kaggle/Kaggle_Daily_USD_Market_Data_23_CCs_until_07_07_2021/"
 opening_price_df = pd.DataFrame(columns=['TIMESTAMP'])
 high_price_df = pd.DataFrame(columns=['TIMESTAMP'])

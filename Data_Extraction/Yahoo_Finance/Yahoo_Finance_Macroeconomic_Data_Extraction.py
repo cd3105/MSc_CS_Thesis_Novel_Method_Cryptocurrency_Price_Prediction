@@ -1,5 +1,7 @@
 import yfinance as yf
 
+# Script for extracting Macroeconomic Indicators from Yahoo Finance
+
 macroeconomic_dict = {'EUR_USD':yf.Ticker("EURUSD=X").history(period="max").reset_index(),
                       'CNY_USD':yf.Ticker("CNYUSD=X").history(period="max").reset_index(),
                       'CHF_USD':yf.Ticker("CHFUSD=X").history(period="max").reset_index(),

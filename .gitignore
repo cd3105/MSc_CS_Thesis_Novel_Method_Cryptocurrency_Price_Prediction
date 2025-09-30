@@ -133,5 +133,9 @@ dmypy.json
 Original_Code/saved_models/
 api_key_binance.py
 console_log/
-All_Crypto_Data/
+
+All_Crypto_Data/Crypto_Sub_Reddit_Data
+
+Modeling/Model_Checkpoints
+
 API_Keys.env

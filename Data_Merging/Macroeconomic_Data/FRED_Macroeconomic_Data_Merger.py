@@ -3,6 +3,8 @@ import os
 import re
 from datetime import datetime
 
+# Script to Merge FRED Data into a single Dataset
+
 base_daily_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/FRED/1_Day/"
 base_monthly_path = "All_Crypto_Data/Macroeconomic_Data/Unmerged/FRED/1_Month/"
 

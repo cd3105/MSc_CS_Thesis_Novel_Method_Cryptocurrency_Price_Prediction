@@ -3,6 +3,8 @@ import os
 import zipfile
 from datetime import datetime
 
+# Script for unzipping Binance Data and concatenating the monthly data
+
 base_path = "All_Crypto_Data/Crypto_Market_Data/Unmerged/Binance/"
 frequencies = ['1_Day', '1_Hour']
 
