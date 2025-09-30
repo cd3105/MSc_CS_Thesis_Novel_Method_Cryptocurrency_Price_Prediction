@@ -1,0 +1,5 @@
+- Gold Price: https://datahub.io/core/gold-prices
+- Oil Prices: https://datahub.io/core/oil-prices
+- Natural Gas Price: https://datahub.io/core/natural-gas
+- S&P500 Index: https://datahub.io/core/s-and-p-500
+- VIX Index: https://datahub.io/core/finance-vix

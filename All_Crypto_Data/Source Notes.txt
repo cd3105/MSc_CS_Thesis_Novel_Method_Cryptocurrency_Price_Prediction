@@ -1,0 +1,49 @@
+News Data:
+- CoinDesk: https://www.coindesk.com/
+- CoinMarketCap: https://coinmarketcap.com/
+- CoinTelegraph: https://cointelegraph.com/
+- CryptoPanic: https://cryptopanic.com/
+- FinancialTimes: https://www.ft.com/
+- Google News: https://news.google.com/home?hl=en-US&gl=US&ceid=US:en
+- NASDAQ: https://data.nasdaq.com/databases/BICRS#documentation
+- \cite{48_3}: News Sentiment Index
+
+Forum Data:
+- BTC Forum: https://bitcointalk.org/
+- ETH Forum: https://wayback.archive-it.org/16516/20210618210825/https://forum.ethereum.org/
+- XRP Forum: http://www.xrpchat.com/
+
+Transactions:
+- https://www.walletexplorer.com/
+- https://etherscan.io/charts
+
+Other:
+- \cite{48_1}: Geopolitical Risk
+- \cite{48_2}: Economic Uncertainty (Twitter-based)
+- \cite{48_4}: Infectious Disease Equity Market Volatility Tracker
+
+Blockchain:
+- Blockchain (BTC) --> Retrieved
+- Etherscan (ETH) --> Retrieved
+- Bitcoinity (BTC) --> Retrieved
+- Quandl (BTC) --> Retrieved
+- BTCity (BTC) --> WEBSITE UNAVAILABLE
+- BitInfoCharts (BTC, ETH, LTC) --> Retrieved
+- BitCoinCharts (BTC) --> WEBSITE UNAVAILABLE
+- BTC123 --> DEEMED NOT NECESSARY
+
+Alternative:
+- https://alternative.me/crypto/api/ --> COULD SCRAPE PRICE DATA (COIN GECKO VIA ALTERNATIVE)
+
+Google Trends:
+- … 
+
+Other Possible Blockchain Data:
+- https://www.theblock.co/ (BTC & ETH)
+- https://mempool.space/ (BTC)
+- https://app.intotheblock.com/
+- https://blockwatch.cc/docs/api
+- https://cryptoquant.com/
+- https://ycharts.com/
+- https://ethplorer.io/performance
+

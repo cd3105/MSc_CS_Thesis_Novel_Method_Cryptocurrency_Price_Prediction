@@ -1,0 +1,8 @@
+,Frequency,ADF TS,ADF P-Val.,ADF CV (1\%),ADF CV (5\%),ADF CV (10\%),ADF_Determination,KPSS TS,KPSS P-Val,KPSS CV (1\%),KPSS CV (2.5\%),KPSS CV (5\%),KPSS CV (10\%),KPSS_Determination
+0,12_Hour,-3.062,0.030,-3.432,-2.862,-2.567,Stationary,0.651,0.018,0.739,0.574,0.463,0.347,Non-Stationary
+1,1_Day,-3.177,0.021,-3.433,-2.863,-2.567,Stationary,0.418,0.069,0.739,0.574,0.463,0.347,Stationary
+2,1_Hour,-3.776,0.003,-3.430,-2.862,-2.567,Stationary,2.247,0.010,0.739,0.574,0.463,0.347,Non-Stationary
+3,2_Hour,-3.731,0.004,-3.431,-2.862,-2.567,Stationary,1.622,0.010,0.739,0.574,0.463,0.347,Non-Stationary
+4,4_Hour,-4.478,0.000,-3.431,-2.862,-2.567,Stationary,1.107,0.010,0.739,0.574,0.463,0.347,Non-Stationary
+5,6_Hour,-3.588,0.006,-3.431,-2.862,-2.567,Stationary,0.924,0.010,0.739,0.574,0.463,0.347,Non-Stationary
+6,8_Hour,-3.536,0.007,-3.431,-2.862,-2.567,Stationary,0.767,0.010,0.739,0.574,0.463,0.347,Non-Stationary
