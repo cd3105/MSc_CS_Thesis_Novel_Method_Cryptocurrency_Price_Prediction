@@ -130,12 +130,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-Original_Code/saved_models/
+.vscode/
 api_key_binance.py
 console_log/
 
 All_Crypto_Data/Crypto_Sub_Reddit_Data
-All_Crypto_Data/Crypto_Market_Data/Merged/Kaggle
 All_Crypto_Data/Crypto_Market_Data/Merged/Yahoo_Finance
 
 Modeling/Model_Checkpoints
