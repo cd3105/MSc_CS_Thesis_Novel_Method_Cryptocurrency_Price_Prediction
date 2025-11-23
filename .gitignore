@@ -137,5 +137,9 @@ console_log/
 All_Crypto_Data/Crypto_Sub_Reddit_Data
 
 Modeling/Model_Checkpoints
+Modeling/Hyperparameter_Tuning_Results
+Modeling/Results/Baseline
+Modeling/Results/Baseline_Experiment
+Modeling/Results_Experiment
 
 API_Keys.env
